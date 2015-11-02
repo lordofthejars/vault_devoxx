@@ -1,0 +1,466 @@
+@import 'prism/themes/prism-okaidia.css'
+
+td.spaceleft
+  padding-left: .4em
+
+pre.small
+  font-size: .55em
+  padding: 0
+  background-color: #303030 !important
+
+sup
+  font-size: 0.3em
+  position: relative
+  top: -1.5em
+
+li:before
+  content: ''
+
+h1 a
+  border: none
+
+h1.name
+  font-size: 1.3em
+  margin: 0
+
+h2
+  font-weight: 900 
+
+
+h2.cube
+  margin-bottom: -250px
+
+.footer
+  font-size: 0.5em
+  color:white
+  position: fixed
+  text-align:left
+  bottom: 0
+  left: 0
+  padding: 10px
+
+.avatar
+  filter: grayscale(30%)
+  width: 120px
+  height: @width
+  border-radius: 100%
+  margin-bottom: .5em
+
+.schemas
+  width: 60%
+
+.logos
+  width: 600px
+
+.cloudbees
+  width: 150px
+  margin: .5em 0
+
+.two-columns
+  -webkit-column-count: 3
+  -moz-column-count: 3
+  column-count: 3
+
+.code-side
+  float:left
+  display:inline-block
+  
+.side-by-side
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  margin: 0.5em
+.images
+  text-align:center;
+
+.bespoke-slide
+  z-index: 1
+
+pre
+  padding: 2em !important
+
+pre, code
+  margin: 0 !important
+
+.backdrop
+  &--title
+    background-image: url('../images/polling.jpg')
+    background-position: 0 0
+  &--matrix
+    background-image: url('../images/matrix.gif')
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--fight
+    background-image: url('../images/fight.gif')
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--isolation
+    background-image: url('../images/isolation.jpg')
+    &.bespoke-backdrop-active
+      opacity: 0.45
+  &--prepare
+    background: url('../images/prepare.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--got
+    background: url('../images/got.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.40
+  &--runner
+    background: url('../images/runner.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--whale
+    background: url('../images/whale.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--fit
+    background: url('../images/fit.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--discovery
+    background: url('../images/discovery.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--tomcat
+    background: url('../images/tomcat.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--arquillian
+    background: url('../images/arquillian.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--cube
+    background: url('../images/arquilliancube.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--datacenter
+    background: url('../images/datacenter.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--schrodinger
+    background: url('../images/schrodinger.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--cockpit
+    background: url('../images/cockpit.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--certified
+    background: url('../images/certified.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.90
+  &--light
+    background: url('../images/light.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--rescue
+    background: url('../images/rescue.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--gears
+    background: url('../images/gears.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.90
+  &--hotel
+    background: url('../images/hotel.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--rest
+    background: url('../images/rest.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--oldsec
+    background: url('../images/oldsec.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--shin
+    background: url('../images/shin.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--cookies
+    background: url('../images/cookie.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--especies
+    background: url('../images/especies.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.40
+  &--ohno
+    background: url('../images/ohno.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.80
+  &--java_ee
+    background-color: white
+    background-image: url('../images/java_ee.png')
+    background-size: 40%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--tomee
+    background-color: white
+    background-image: url('../images/tomee.png')
+    background-size: 40%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--javaone
+    background-color: black
+    background-image: url('../images/logo.png')
+    background-size: 30%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--jwt
+    background-color: white
+    background-image: url('../images/jwt_logo.svg')
+    background-size: 40%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 0.25
+  &--mesosmarathon
+    background-color: black
+    background-image: url('../images/mesosmarathon.png')
+    background-size: 40%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 0.25
+  &--vault
+    background: url('../images/vault.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--engine
+    background: url('../images/engine.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--finger
+    background: url('../images/finger.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--adaglasses
+    background: url('../images/adaglasses.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.60
+  &--adaoh
+    background: url('../images/adaoh.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.80
+  &--alexband
+    background: url('../images/alexband.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--test
+    background: url('../images/test.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--silos
+    background: url('../images/silos.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--adarise
+    background: url('../images/adarise.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--tokens
+    background: url('../images/tokens.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.40
+  &--pirates
+    background-image: url('../images/destroy.gif')
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--ending
+    background-image: url('../images/ending.jpg')
+    &.bespoke-backdrop-active
+      opacity: 0.75
+  &--poisonapple
+    background-image: url('../images/poisonapple.gif')
+    background-position: 50% 80%
+    &.bespoke-backdrop-active
+      opacity: 0.25
+  &--backbonejs
+    background-color: white
+    background-image: url('../images/backbonejs.png')
+    background-size: 30%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: 0.15
+  &--angularjs
+    background-color: white
+    background-image: url('../images/angularjs.png')
+    background-size: 30%
+    background-repeat: no-repeat
+    transition-delay: 1s
+    &.bespoke-backdrop-active
+      opacity: 0.15
+    &.bespoke-backdrop-after
+      transition-delay: 0s
+    &.bespoke-backdrop-before
+      transition-delay: 2s
+  &--chrome
+    background-image: url('../images/chrome.jpg')
+  &--clojure
+    background-image: url('../images/clojure.jpg')
+    &.bespoke-backdrop-active
+      opacity: 0.2
+  &--petehunt
+    filter: grayscale(50%)
+    background-image: url('../images/petehunt.jpeg')
+    background-position: 50% 0
+    transform-origin: 50% 20%
+    transition: opacity 1s ease, transform 16s ease
+    &.bespoke-backdrop-active
+      opacity: 0.2
+  &--leebyron
+    background-image: url('../images/leebyron.jpeg')
+    transform-origin: 50% 40%
+    &.bespoke-backdrop-active
+      opacity: 0.25
+  &--swannodette
+    background-image: url('../images/swannodette.jpg')
+    background-position: 50% 0
+    transform-origin: 60% 40%
+  &--raynos
+    background-image: url('../images/raynos.jpeg')
+    &.bespoke-backdrop-active
+      opacity: 0.4
+  &--mattesch
+    background-image: url('../images/mattesch.png')
+    background-position: 0 100%
+    transform-origin: 20% 50%
+  &--pascalhartig
+    background-image: url('../images/pascalhartig.jpeg')
+    background-position: 0 20%
+    transform-origin: 30% 30%
+    transition: opacity 1s ease, transform 16s ease
+  &--nicolasgallagher
+    background-image: url('../images/nicolasgallagher.jpeg')
+    filter: grayscale(100%)
+    transform-origin: 50% 40%
+    transition: opacity 1s ease, transform 16s ease
+  &--yellow
+    background: #D2D22E
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--green
+    background: #00CC00
+    &.bespoke-backdrop-active
+      opacity: 1
+  &--still
+    transition: opacity 1s ease
+    transform: none
+  &--bw
+    filter: grayscale(100%)
+
+.yellow
+  color: black
+  h1
+    border-color: currentColor
+
+.green
+  color: black
+  h1
+    border-color: currentColor
+
+.lists
+  text-align: center
+  list-style-type: none
+
+.underline
+  padding-bottom: 0.25em;
+  border-top-color: rgb(221, 221, 221);
+  border-top-style: solid;
+  border-top-width: 0px;
+  border-right-color: rgb(221, 221, 221);
+  border-right-style: solid;
+  border-right-width: 0;
+  border-bottom-color: rgb(221, 221, 221);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgb(221, 221, 221);
+  border-left-style: solid;
+  border-left-width: 0;
+
+.important
+  color: red
+
+.black
+  color: black
+  
+.green
+  color: green
+
+.yellowColor
+  color: yellow
+
+.blue
+  color: blue
+  
+.background-title
+  background-color: rgba(250,250,250,0.6);
+  
+.title-single-words
+    word-spacing: 9999px
+    line-height: 1.5em
+    overflow: hidden
+
+.bespoke-slide aside
+  display: none
+
+.image-caption
+  position: absolute
+  bottom: 0.25em
+  right: 0
+  background-color: rgba(250,250,250,0.6);
+  color: #fff
+  padding: 0 0.25em 0.1em 0.25em
+  
+.bullet.expand
+  transition: all 2s ease
+  opacity: 0
+  overflow-x: hidden
+  overflow-y: visible
+  max-width: 0
+  display: inline-block
+  white-space: nowrap
+  text-align: center
+  line-height: 1.1em
+  position: relative
+  top: .2em
+  &.bespoke-bullet-active
+    opacity: 1
+    max-width: 500px

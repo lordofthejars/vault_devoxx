@@ -1,0 +1,242 @@
+mixin slide(names, slideClasses)
+  if names
+    section(class=names+' '+slideClasses, data-bespoke-backdrop='backdrop ' + names.split(' ').map(function(name) { return 'backdrop--' + name; }).join(' '))
+      block
+  else
+    section
+      block
+
+doctype html
+html
+  head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+  title Innovating Democracy with Java EE and Open Source 
+
+  link(rel='stylesheet', type='text/css', href='build/build.css')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+
+  body
+
+    article
+
+      +slide('got')
+        h1 Develop and Deploy your <span class='important'>JavaEE</span> Microservies with <span class='important'>Apache TomEE</span>
+
+      +slide
+        img.avatar(src='images/profile.jpg')
+        h4 @alexsotob - lordofthejars.com
+        img.cloudbees(src='images/cloudbees.png')
+        img.logos(src='images/logos.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        h2 Dependencies
+        pre.small.language-xml
+          code.
+            &lt;dependency&gt;
+              &lt;groupId&gt;javax&lt;/groupId&gt;
+              &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+              &lt;version>7.0&lt;/version&gt;
+              &lt;scope>provided&lt;/scope&gt;
+            &lt;/dependency&gt;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide  
+        h2 JAX-RS
+        pre.small.language-javascript
+          code.
+            @Singleton
+            @Lock(LockType.READ)
+            @Path("/quote")
+            public class QuoteService {
+              
+              @PersistenceContext
+              EntityManager em;
+
+              @GET
+              @Produces({TEXT_PLAIN})
+              public String quote() {
+                return "The Winter is Coming.";            
+              }
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('runner')
+        h1.title-single-words Application <span class='important'>Server</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Open source for transparency
+      
+      +slide('tomee')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('shin')
+        h2 It is <span class='important'>Fast</span>
+        pre.small.language-terminal
+          code.
+            aaaa
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+     
+      +slide    
+        h2 JUnit      
+        pre.small.language-javascript
+          code.
+            @Test
+            public void shouldGetQuote() {
+              QuoteService quoteService = new QuoteService();
+              quoteService.entityManager = mock(EntityManager.class);
+                
+              assertThat(quoteService.quote(), is("The Winter is Coming."));
+            }
+        div.footer Alex Soto (@alexsotob)
+          
+      +slide('arquillian')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+     
+      +slide    
+        h2 Arquillian Test
+        
+        pre.small.language-javascript
+          code.
+            @RunWith(Arquillian.class)
+            public class ColorServiceIntegrationTest {
+
+              @Deployment public static WebArchive create() {
+                  return ShrinkWrap.create(WebArchive.class)
+                                      .addClasses(ColorService.class, 
+                                                  Color.class);
+              }
+              
+              @ArquillianResource private URL webappUrl;
+
+              @Test @RunAsClient public void postAndGet() {
+                final WebClient webClient = WebClient.create(webappUrl);
+                final Response response = webClient.path("quote").get();
+                assertThat(response.getStatus(), is(200));
+                //...
+              }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+     
+           
+      +slide('datacenter')
+        h1 Deploying to <span class='important'>Production</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+     
+      +slide
+        h2 Using <span class='important'>WAR</span> file
+        pre.small.language-terminal
+          code.
+            mvn clean install
+            cp quote.war &lt;TOMEE_HOME&gt;/webapps
+            
+      +slide
+        h2 TomEE Maven Plugin
+        pre.small.language-xml
+          code.
+            &lt;plugin&gt;
+              &lt;groupId&gt;org.apache.openejb.maven&lt;/groupId&gt;
+              &lt;artifactId&gt;tomee-maven-plugin&lt;/artifactId&gt;
+              &lt;version&gt;${tomee.version}&lt;/version&gt;
+              &lt;configuration&gt;
+                &lt;tomeeVersion>${tomee.version}&lt;/tomeeVersion&gt;
+                &lt;tomeeClassifier&gt;jaxrs&lt;/tomeeClassifier&gt;
+              &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Making <span class='important'>JAR</span> and not <span class='important'>WAR</span>
+        pre.small.language-terminal
+          code.
+            clean install tomee:exec
+            java -jar quote-1.0.0-exec.jar
+        br
+        pre.small.language-terminal
+          code.
+            Extracting tomee to /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
+            Using CATALINA_BASE:   /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
+            Using CATALINA_HOME:   /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
+            Using CATALINA_TMPDIR: /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution/temp
+            Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
+            Using CLASSPATH:       /Users/alexsoto/git/tomee-jaxrs-starter-...
+      
+      +slide('whale')
+        h2 Deploy in <span class='important'>Docker</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Dockerfile
+        pre.small.language-javascript
+          code.
+            FROM java:8
+            WORKDIR /
+            ADD target/quote-1.0.0-exec.jar /app/quote-1.0.0-exec.jar
+            EXPOSE 8080
+            CMD ["java", "-jar", "/app/quote-1.0.0-exec.jar"]
+        h2 Build And Run
+        pre.small.language-terminal
+          code.
+            docker build -t quote .
+            docker run -ti -p 8080:8080 quote
+      
+      +slide('mesosmarathon')
+        h2. Mesos + Marathon in Native
+          
+      +slide
+        h3 Run Apache TomEE 
+        pre.small.language-json
+          code.
+            {
+              "uris": [
+                "http://myartifactsrepo/quote-1.0.0-exec.jar"
+              ]
+              "id": "quote",
+              "cmd": "java -jar -DadditionalSystemProperties=-Dtomcat.http.port=$PORT quote-1.0.0-exec.jar",
+              "mem": 256,
+              "cpus": 0.5,
+              "instances": 1,
+              "ports":[10000],
+              "constraints": [
+                ["hostname", "UNIQUE"]
+              ]
+            }
+      
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 FTW
+     
+      +slide
+        img.avatar(src='images/profile.jpg')
+        br
+        a(href='http://github.com/lordofthejars/javaee_javaone', style='border:none')
+          i.fa.fa-github
+          h3 http://github.com/lordofthejars/javaee_javaone
+          i.fa.fa-envelope
+          h3 asotobu@gmail.com
+      
+    script(src='build/build.js')
