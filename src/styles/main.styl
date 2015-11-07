@@ -47,7 +47,7 @@ h2.cube
   margin-bottom: .5em
 
 .schemas
-  width: 60%
+  width: 100%
 
 .logos
   width: 600px
@@ -85,30 +85,19 @@ pre, code
 
 .backdrop
   &--title
-    background-image: url('../images/polling.jpg')
+    background-image: url('../images/adama.jpg')
     background-position: 0 0
+    &.bespoke-backdrop-active
+      opacity: 0.75
   &--matrix
     background-image: url('../images/matrix.gif')
     &.bespoke-backdrop-active
       opacity: 0.75
-  &--fight
-    background-image: url('../images/fight.gif')
-    &.bespoke-backdrop-active
-      opacity: 0.75
-  &--isolation
-    background-image: url('../images/isolation.jpg')
-    &.bespoke-backdrop-active
-      opacity: 0.45
-  &--prepare
-    background: url('../images/prepare.jpg') no-repeat center center fixed
+  &--infra
+    background: url('../images/infra.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.75
-  &--got
-    background: url('../images/got.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.40
   &--runner
     background: url('../images/runner.jpg') no-repeat center center fixed
     background-size: cover
@@ -118,29 +107,14 @@ pre, code
     background: url('../images/whale.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
-      opacity: 0.60
+      opacity: 0.70
   &--fit
     background: url('../images/fit.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.70
-  &--discovery
-    background: url('../images/discovery.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.70
-  &--tomcat
-    background: url('../images/tomcat.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.60
   &--arquillian
     background: url('../images/arquillian.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 1
-  &--cube
-    background: url('../images/arquilliancube.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 1
@@ -149,41 +123,16 @@ pre, code
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.60
-  &--schrodinger
-    background: url('../images/schrodinger.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.70
-  &--cockpit
-    background: url('../images/cockpit.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.60
-  &--certified
-    background: url('../images/certified.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.90
   &--light
     background: url('../images/light.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.70
-  &--rescue
-    background: url('../images/rescue.jpg') no-repeat center center fixed
+  &--ant
+    background: url('../images/ant.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.70
-  &--gears
-    background: url('../images/gears.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.90
-  &--hotel
-    background: url('../images/hotel.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.60
   &--rest
     background: url('../images/rest.jpg') no-repeat center center fixed
     background-size: cover
@@ -199,21 +148,6 @@ pre, code
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.70
-  &--cookies
-    background: url('../images/cookie.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.60
-  &--especies
-    background: url('../images/especies.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.40
-  &--ohno
-    background: url('../images/ohno.jpg') no-repeat center center fixed
-    background-size: cover
-    &.bespoke-backdrop-active
-      opacity: 0.80
   &--java_ee
     background-color: white
     background-image: url('../images/java_ee.png')
@@ -221,6 +155,13 @@ pre, code
     background-repeat: no-repeat
     &.bespoke-backdrop-active
       opacity: 1
+  &--vaulth
+    background-color: white
+    background-image: url('../images/vault.png')
+    background-size: 20%
+    background-repeat: no-repeat
+    &.bespoke-backdrop-active
+      opacity: .2
   &--tomee
     background-color: white
     background-image: url('../images/tomee.png')
@@ -242,13 +183,13 @@ pre, code
     background-repeat: no-repeat
     &.bespoke-backdrop-active
       opacity: 0.25
-  &--mesosmarathon
+  &--appid
     background-color: black
-    background-image: url('../images/mesosmarathon.png')
-    background-size: 40%
+    background-image: url('../images/appid.png')
+    background-size: 50%
     background-repeat: no-repeat
     &.bespoke-backdrop-active
-      opacity: 0.25
+      opacity: 1
   &--vault
     background: url('../images/vault.jpg') no-repeat center center fixed
     background-size: cover
@@ -258,12 +199,22 @@ pre, code
     background: url('../images/engine.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
-      opacity: 0.60
-  &--finger
-    background: url('../images/finger.jpg') no-repeat center center fixed
+      opacity: 0.40
+  &--fence
+    background: url('../images/_fence.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.70
+  &--monolith
+    background: url('../images/monolith.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.60
+  &--keys
+    background: url('../images/keys.jpg') no-repeat center center fixed
+    background-size: cover
+    &.bespoke-backdrop-active
+      opacity: 0.45
   &--adaglasses
     background: url('../images/adaglasses.jpg') no-repeat center center fixed
     background-size: cover
@@ -273,7 +224,7 @@ pre, code
     background: url('../images/adaoh.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
-      opacity: 0.80
+      opacity: 0.90
   &--alexband
     background: url('../images/alexband.jpg') no-repeat center center fixed
     background-size: cover
@@ -294,31 +245,15 @@ pre, code
     background-size: cover
     &.bespoke-backdrop-active
       opacity: 0.70
-  &--tokens
-    background: url('../images/tokens.jpg') no-repeat center center fixed
+  &--chicken
+    background: url('../images/chicken.jpg') no-repeat center center fixed
     background-size: cover
     &.bespoke-backdrop-active
-      opacity: 0.40
-  &--pirates
-    background-image: url('../images/destroy.gif')
-    &.bespoke-backdrop-active
-      opacity: 0.75
+      opacity: 0.70
   &--ending
-    background-image: url('../images/ending.jpg')
+    background-image: url('../images/end.jpg')
     &.bespoke-backdrop-active
-      opacity: 0.75
-  &--poisonapple
-    background-image: url('../images/poisonapple.gif')
-    background-position: 50% 80%
-    &.bespoke-backdrop-active
-      opacity: 0.25
-  &--backbonejs
-    background-color: white
-    background-image: url('../images/backbonejs.png')
-    background-size: 30%
-    background-repeat: no-repeat
-    &.bespoke-backdrop-active
-      opacity: 0.15
+      opacity: 0.65
   &--angularjs
     background-color: white
     background-image: url('../images/angularjs.png')
@@ -331,47 +266,6 @@ pre, code
       transition-delay: 0s
     &.bespoke-backdrop-before
       transition-delay: 2s
-  &--chrome
-    background-image: url('../images/chrome.jpg')
-  &--clojure
-    background-image: url('../images/clojure.jpg')
-    &.bespoke-backdrop-active
-      opacity: 0.2
-  &--petehunt
-    filter: grayscale(50%)
-    background-image: url('../images/petehunt.jpeg')
-    background-position: 50% 0
-    transform-origin: 50% 20%
-    transition: opacity 1s ease, transform 16s ease
-    &.bespoke-backdrop-active
-      opacity: 0.2
-  &--leebyron
-    background-image: url('../images/leebyron.jpeg')
-    transform-origin: 50% 40%
-    &.bespoke-backdrop-active
-      opacity: 0.25
-  &--swannodette
-    background-image: url('../images/swannodette.jpg')
-    background-position: 50% 0
-    transform-origin: 60% 40%
-  &--raynos
-    background-image: url('../images/raynos.jpeg')
-    &.bespoke-backdrop-active
-      opacity: 0.4
-  &--mattesch
-    background-image: url('../images/mattesch.png')
-    background-position: 0 100%
-    transform-origin: 20% 50%
-  &--pascalhartig
-    background-image: url('../images/pascalhartig.jpeg')
-    background-position: 0 20%
-    transform-origin: 30% 30%
-    transition: opacity 1s ease, transform 16s ease
-  &--nicolasgallagher
-    background-image: url('../images/nicolasgallagher.jpeg')
-    filter: grayscale(100%)
-    transform-origin: 50% 40%
-    transition: opacity 1s ease, transform 16s ease
   &--yellow
     background: #D2D22E
     &.bespoke-backdrop-active
@@ -443,11 +337,13 @@ pre, code
 
 .image-caption
   position: absolute
-  bottom: 0.25em
+  bottom: 1.5em
   right: 0
+  //margin: 0 auto;
+  //width: 100%;
   background-color: rgba(250,250,250,0.6);
   color: #fff
-  padding: 0 0.25em 0.1em 0.25em
+  padding: 0.25em 0.25em 0.1em 0.25em
   
 .bullet.expand
   transition: all 2s ease

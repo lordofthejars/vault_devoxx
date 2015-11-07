@@ -20,8 +20,8 @@ html
 
     article
 
-      +slide('got')
-        h1 Develop and Deploy your <span class='important'>JavaEE</span> Microservies with <span class='important'>Apache TomEE</span>
+      +slide('title')
+        h1 <span class='important'>Secrets</span> are secrets. Please <span class='important'>maintain</span> them as <span class='important'>secrets</span>.
 
       +slide
         img.avatar(src='images/profile.jpg')
@@ -31,212 +31,224 @@ html
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
-
+      
       +slide
-        h2 Dependencies
+        div.images
+          img.side-by-side(src='images/dzone1.png')
+          img.side-by-side(src='images/aia.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('adarise')
+        h1 Questions
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('alexband')
+        .image-caption
+          h2 Who <span class='important'>Encrypt</span> Passwords in Resource Files?
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Database, JMS, JWT, it is important
+      
+      +slide  
+        h2 Apache TomEE Resources
         pre.small.language-xml
           code.
-            &lt;dependency&gt;
-              &lt;groupId&gt;javax&lt;/groupId&gt;
-              &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
-              &lt;version>7.0&lt;/version&gt;
-              &lt;scope>provided&lt;/scope&gt;
-            &lt;/dependency&gt;
+            &lt;Resource id=”myds” type=”DataSource”&gt;
+              JdbcDriver = org.hsqldb.jdbc.JDBCDriver
+              JdbcUrl = jdbc:hsqldb:mem:my-datasource
+              Username = SA
+              Password = SA
+            &lt;/Resource&gt;
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
       
       +slide  
-        h2 JAX-RS
-        pre.small.language-javascript
-          code.
-            @Singleton
-            @Lock(LockType.READ)
-            @Path("/quote")
-            public class QuoteService {
-              
-              @PersistenceContext
-              EntityManager em;
-
-              @GET
-              @Produces({TEXT_PLAIN})
-              public String quote() {
-                return "The Winter is Coming.";            
-              }
-            }
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-      
-      +slide('runner')
-        h1.title-single-words Application <span class='important'>Server</span>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-        aside(role='note') Open source for transparency
-      
-      +slide('tomee')
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-      
-      +slide('shin')
-        h2 It is <span class='important'>Fast</span>
-        pre.small.language-terminal
-          code.
-            aaaa
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-     
-      +slide    
-        h2 JUnit      
-        pre.small.language-javascript
-          code.
-            @Test
-            public void shouldGetQuote() {
-              QuoteService quoteService = new QuoteService();
-              quoteService.entityManager = mock(EntityManager.class);
-                
-              assertThat(quoteService.quote(), is("The Winter is Coming."));
-            }
-        div.footer Alex Soto (@alexsotob)
-          
-      +slide('arquillian')
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-     
-      +slide    
-        h2 Arquillian Test
-        
-        pre.small.language-javascript
-          code.
-            @RunWith(Arquillian.class)
-            public class ColorServiceIntegrationTest {
-
-              @Deployment public static WebArchive create() {
-                  return ShrinkWrap.create(WebArchive.class)
-                                      .addClasses(ColorService.class, 
-                                                  Color.class);
-              }
-              
-              @ArquillianResource private URL webappUrl;
-
-              @Test @RunAsClient public void postAndGet() {
-                final WebClient webClient = WebClient.create(webappUrl);
-                final Response response = webClient.path("quote").get();
-                assertThat(response.getStatus(), is(200));
-                //...
-              }
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-     
-           
-      +slide('datacenter')
-        h1 Deploying to <span class='important'>Production</span>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-     
-      +slide
-        h2 Using <span class='important'>WAR</span> file
-        pre.small.language-terminal
-          code.
-            mvn clean install
-            cp quote.war &lt;TOMEE_HOME&gt;/webapps
-            
-      +slide
-        h2 TomEE Maven Plugin
+        h2 Apache TomEE Resources
         pre.small.language-xml
           code.
-            &lt;plugin&gt;
-              &lt;groupId&gt;org.apache.openejb.maven&lt;/groupId&gt;
-              &lt;artifactId&gt;tomee-maven-plugin&lt;/artifactId&gt;
-              &lt;version&gt;${tomee.version}&lt;/version&gt;
-              &lt;configuration&gt;
-                &lt;tomeeVersion>${tomee.version}&lt;/tomeeVersion&gt;
-                &lt;tomeeClassifier&gt;jaxrs&lt;/tomeeClassifier&gt;
-              &lt;/configuration&gt;
-            &lt;/plugin&gt;
+            &lt;Resource id=”myds” type=”DataSource”&gt;
+              JdbcDriver = org.hsqldb.jdbc.JDBCDriver
+              JdbcUrl = jdbc:hsqldb:mem:my-datasource
+              Username = SA
+              Password = xMH5uM1V9vQzVUv5LG7YLA==
+              PasswordCipher = AES
+            &lt;/Resource&gt;
+            &lt;Resource id=”myresource” class-name="org.superbiz.VaultGateway"&gt;
+              //.....
+              VaultPassword = cipher:AES:xMH5uM1V9vQzVUv5LG7YLA==
+            &lt;/Resource&gt;
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
       
-      +slide
-        h2 Making <span class='important'>JAR</span> and not <span class='important'>WAR</span>
-        pre.small.language-terminal
-          code.
-            clean install tomee:exec
-            java -jar quote-1.0.0-exec.jar
-        br
-        pre.small.language-terminal
-          code.
-            Extracting tomee to /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
-            Using CATALINA_BASE:   /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
-            Using CATALINA_HOME:   /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution
-            Using CATALINA_TMPDIR: /Users/alexsoto/git/tomee-jaxrs-starter-project/target/.distribution/temp
-            Using JRE_HOME:        /Library/Java/JavaVirtualMachines/jdk1.8.0_51.jdk/Contents/Home
-            Using CLASSPATH:       /Users/alexsoto/git/tomee-jaxrs-starter-...
-      
-      +slide('whale')
-        h2 Deploy in <span class='important'>Docker</span>
-        div.footer
-          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
-          i.fa.fa-github &nbsp;lordofthejars
-      
-      +slide
-        h2 Dockerfile
+      +slide  
+        h2 Implementation
         pre.small.language-javascript
           code.
-            FROM java:8
-            WORKDIR /
-            ADD target/quote-1.0.0-exec.jar /app/quote-1.0.0-exec.jar
-            EXPOSE 8080
-            CMD ["java", "-jar", "/app/quote-1.0.0-exec.jar"]
-        h2 Build And Run
-        pre.small.language-terminal
-          code.
-            docker build -t quote .
-            docker run -ti -p 8080:8080 quote
-      
-      +slide('mesosmarathon')
-        h2. Mesos + Marathon in Native
-          
-      +slide
-        h3 Run Apache TomEE 
-        pre.small.language-json
-          code.
-            {
-              "uris": [
-                "http://myartifactsrepo/quote-1.0.0-exec.jar"
-              ]
-              "id": "quote",
-              "cmd": "java -jar -DadditionalSystemProperties=-Dtomcat.http.port=$PORT quote-1.0.0-exec.jar",
-              "mem": 256,
-              "cpus": 0.5,
-              "instances": 1,
-              "ports":[10000],
-              "constraints": [
-                ["hostname", "UNIQUE"]
-              ]
+            public AESPasswordCipher() {
+              this.key = readKeyFromDisk();
+              this.secretKey = new SecretKeySpec(key, "AES");
             }
-      
+            
+            public String decrypt(char[] chars) {
+              Cipher cipher = Cipher.getInstance("AES");
+              cipher.init(Cipher.DECRYPT_MODE, secretKey);
+
+              byte[] raw = Base64.getDecoder().decode(toByteArray(chars));
+              byte[] stringBytes = cipher.doFinal(raw);
+              String clearText = new String(stringBytes, "UTF8");
+              return clearText;
+            }
+
+            public char[] encrypt(String s) {}
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
       
+      +slide('chicken')
+        h2.image-caption <span class='important'>Chicken-Egg</span> Problem
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Now we don't put passwords in clear but we put the key
+      
+      +slide('monolith')
+        h2.image-caption <span class='important'>Monolith</span> Application
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') How to get the secrets , how operators put the secret, how do we control access to the secret. It is easy you can delete the file or prompt
+        
+      +slide('adaoh')
+        h2.image-caption <span class='important'>MicroServices</span>?
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Spread the problem (decentralizd secrets), manual steps not good, works in services
+        
+      +slide('vaulth')
+        h1 <b>A tool for <span class='important'>managing secrets</span></b>
+        h3 https://vaultproject.io/
+        
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Vault is a tool for securely accessing secrets. A secret is sensitive information. Secret management as a service, REST
+      
       +slide
-        h2 FTW
+        h2.underline Vault Features
+        ul.lists
+          li Secure Secret Storage
+          li Dynamic Secrets
+          li Data Encryption
+          li Leasing, Renewing, Revocation
+          li Auditing
+          li ACL
+          li Multiple Authentication Methods
+          li.fa.fa-heart &nbsp; REST API
+          
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+        aside(role='note') inmem, disk, etcd, consul - generate secrets on-demand (DB, X.509 certificates)- Vault can encrypt and decrypt data without storing it security teams - User/Machine oriented auth
+      
+      +slide('silos')
+        h2.image-caption <span class='important'>Secure</span> Secret Storage
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide('engine')
+        h2 <b>Let's see in Action</b>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide('ant')
+        h2.image-caption <span class='important'>Microservices</span> approach
+        aside(role='note') But token auth is the same as before you need to store somewhere
+      
+      +slide('keys')
+        h1 <span class='important'>APPID</span> Auth
+
+      +slide
+        h2.underline App ID
+        ul.lists
+          li Random Unique Chunk
+          li Generated by Operator
+          li Stored in Configuration Management
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') UUID, generated by Jenkins
+          
+      +slide
+        h2.underline User ID
+        ul.lists
+          li Unique to Instance
+          li Generated by Cloud Init Script
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Intrinsic properties IP, MAC, HOSTNAME, HASH of all
+
+            
+      +slide('appid')
+
+      +slide
+        h2 Each Service Instance
+        h3 login 
+        h2 with Tuple <br /> <span class='important'>{AppID, UserID}</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide('engine')
+        h2 Let's see in Action
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('whale')
+        h2.image-caption Example with <span class='important'>Docker</docker>
      
+      +slide
+        img.schemas(src='images/dockervault.png')
+     
+      +slide('ending')
+        h1 Let's wind <br/> down
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Only first taste go to webpage
+     
+      +slide('infra')
+        h2.image-caption <span class='important'>Vault</span> is a <span class='important'>Service</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Need to be deployed, HA, monitor, ...
+      
+      +slide('fence')
+        h2.image-caption There is <span class='important'>NO</span> Silver Bullet
+      
       +slide
         img.avatar(src='images/profile.jpg')
         br
-        a(href='http://github.com/lordofthejars/javaee_javaone', style='border:none')
+        a(href='http://github.com/lordofthejars/vault_devoxx', style='border:none')
           i.fa.fa-github
-          h3 http://github.com/lordofthejars/javaee_javaone
+          h3 http://github.com/lordofthejars/vault_devoxx
           i.fa.fa-envelope
           h3 asotobu@gmail.com
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
       
     script(src='build/build.js')
