@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Secrets are secrets. Please maintain them as secrets.</title>
+  <link rel="stylesheet" type="text/css" href="build/build.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <body>
+    <article>
+      <section data-bespoke-backdrop="backdrop backdrop--title" class="title undefined">
+        <h1><span class='important'>Secrets</span> are secrets. Please <span class='important'>maintain</span> them as <span class='important'>secrets</span>.</h1>
+      </section>
+      <section><img src="images/profile.jpg" class="avatar">
+        <h4>@alexsotob - lordofthejars.com</h4><img src="images/cloudbees.png" class="cloudbees"><img src="images/logos.png" class="logos">
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section>
+        <div class="images"><img src="images/dzone1.png" class="side-by-side"><img src="images/aia.jpg" class="side-by-side"></div>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--alexband" class="alexband undefined">
+        <div class="image-caption">
+          <h2>Who <span class='important'>Encrypt</span> Passwords in Resource Files?</h2>
+        </div>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Database, JMS, JWT, it is important</aside>
+      </section>
+      <section> 
+        <h2>Apache TomEE Resources</h2>
+        <pre class="small language-xml"><code>&lt;Resource id=”myds” type=”DataSource”&gt;
+  JdbcDriver = org.hsqldb.jdbc.JDBCDriver
+  JdbcUrl = jdbc:hsqldb:mem:my-datasource
+  Username = SA
+  Password = SA
+&lt;/Resource&gt;</code></pre>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section> 
+        <h2>Apache TomEE Resources</h2>
+        <pre class="small language-xml"><code>&lt;Resource id=”myds” type=”DataSource”&gt;
+  JdbcDriver = org.hsqldb.jdbc.JDBCDriver
+  JdbcUrl = jdbc:hsqldb:mem:my-datasource
+  Username = SA
+  Password = xMH5uM1V9vQzVUv5LG7YLA==
+  PasswordCipher = AES
+&lt;/Resource&gt;
+&lt;Resource id=”myresource” class-name="org.superbiz.VaultGateway"&gt;
+  //.....
+  VaultPassword = cipher:AES:xMH5uM1V9vQzVUv5LG7YLA==
+&lt;/Resource&gt;</code></pre>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section> 
+        <h2>Implementation</h2>
+        <pre class="small language-javascript"><code>public AESPasswordCipher() {
+  this.key = readKeyFromDisk();
+  this.secretKey = new SecretKeySpec(key, "AES");
+}
+
+public String decrypt(char[] chars) {
+  Cipher cipher = Cipher.getInstance("AES");
+  cipher.init(Cipher.DECRYPT_MODE, secretKey);
+  
+  byte[] raw = Base64.getDecoder().decode(toByteArray(chars));
+  byte[] stringBytes = cipher.doFinal(raw);
+  String clearText = new String(stringBytes, "UTF8");
+  return clearText;
+}
+
+public char[] encrypt(String s) {}</code></pre>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--chicken" class="chicken undefined">
+        <h2 class="image-caption"><span class='important'>Chicken-Egg</span> Problem</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Now we don't put passwords in clear but we put the key</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--monolith" class="monolith undefined">
+        <h2 class="image-caption"><span class='important'>Monolith</span> Application</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">how do we control access to the secret. It is easy you can delete the file or prompt, but requires manual step</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--adaoh" class="adaoh undefined">
+        <h2 class="image-caption"><span class='important'>MicroServices</span>?</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Spread the problem (decentralizd secrets), cluster manager which boots automatically services</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--vaulth" class="vaulth undefined">
+        <h1><b>A tool for <span class='important'>managing secrets</span></b></h1>
+        <h3>https://vaultproject.io/</h3>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Vault is a tool for securely accessing secrets. A secret is sensitive information. Secret management as a service</aside>
+      </section>
+      <section>
+        <h2 class="underline">Vault Features</h2>
+        <ul class="lists">
+          <li>Secure Secret Storage</li>
+          <li>Dynamic Secrets</li>
+          <li>Data Encryption</li>
+          <li>Leasing, Renewing, Revocation</li>
+          <li>Auditing</li>
+          <li>ACL</li>
+          <li>Multiple Authentication Methods</li>
+          <li class="fa fa-heart">&nbsp; REST API</li>
+        </ul>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">inmem, disk, etcd, consul - generate secrets on-demand (DB, X.509 certificates)- Vault can encrypt and decrypt data without storing it security teams - User/Machine oriented auth</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--silos" class="silos undefined">
+        <h2 class="image-caption"><span class='important'>Secure</span> Secret Storage</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--engine" class="engine undefined">
+        <h2><b>Let's see in Action</b></h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--ant" class="ant undefined">
+        <h2 class="image-caption"><span class='important'>Microservices</span> approach</h2>
+        <aside role="note">But token auth is the same as before you need to store somewhere</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--keys" class="keys undefined">
+        <h1><span class='important'>APPID</span> Auth</h1>
+        <aside role="note">provide two elements to access</aside>
+      </section>
+      <section>
+        <h2 class="underline">App ID</h2>
+        <ul class="lists">
+          <li>Random Unique Chunk</li>
+          <li>Unique to Application (aka Service)</li>
+          <li>Generated by Operator</li>
+          <li>Stored in Configuration Management</li>
+        </ul>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">UUID, generated by Jenkins</aside>
+      </section>
+      <section>
+        <h2 class="underline">User ID</h2>
+        <ul class="lists">
+          <li>Intrinsic Properties</li>
+          <li>Unique to Instance</li>
+          <li>Generated by Cloud Init Script</li>
+        </ul>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Intrinsic properties IP, MAC, HOSTNAME, HASH of all</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--appid" class="appid undefined">
+      </section>
+      <section>
+        <h2>Each Service</h2>
+        <h3>login </h3>
+        <h2>with Tuple <br /> <span class='important'>{AppID, UserID}</span></h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--engine" class="engine undefined">
+        <h2>Let's see in Action</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--whale" class="whale undefined">
+        <h2 class="image-caption">Example with <span class='important'>Docker</docker></h2>
+      </section>
+      <section><img src="images/dockervault.png" class="schemas">
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--ending" class="ending undefined">
+        <h1>Let's wind <br/> down</h1>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Only first taste go to webpage</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--infra" class="infra undefined">
+        <h2 class="image-caption"><span class='important'>Vault</span> is a <span class='important'>Service</span></h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+        <aside role="note">Need to be deployed, cuddles, HA, monitor, it can be used for monolith as well...</aside>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--fence" class="fence undefined">
+        <h2 class="image-caption">There is <span class='important'>NO</span> Silver Bullet</h2>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--adarise" class="adarise undefined">
+        <h1>Questions</h1>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section><img src="images/profile.jpg" class="avatar"><br><a href="http://lordofthejars.github.io/vault_devoxx/" style="border:none"><i class="fa fa-github"></i>
+          <h3>http://lordofthejars.github.io/vault_devoxx/</h3><i class="fa fa-envelope"></i>
+          <h3>asotobu@gmail.com</h3></a>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
